@@ -34,6 +34,6 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
 
     @food.destroy
-    redirect_to foods_path, notice: "Food successfully deleted."
+    redirect_to foods_path, notice: 'Food successfully deleted.'
   end
 end
