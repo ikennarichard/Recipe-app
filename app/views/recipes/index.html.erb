@@ -1,0 +1,17 @@
+<div>
+  <ul>
+  <%@recipes.each do |recipe|%>
+    <li>
+      <section class='recipe_card'>
+        <div class='recipe_title'>
+          <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
+          <% if current_user == recipe.user %>
+          <%= link_to 'Delete', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' } %>
+          <% end %>
+        </div>
+        <p><%r.description%></p>
+      </section>
+    </li>
+    <%end%>
+  </ul>
+</div>
