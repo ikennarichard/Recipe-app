@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        <% if user_signed_in? %>
+            <li><%= link_to 'Food list', foods_path%></li>
+            <li><%= link_to 'Recipes', recipes_path%></li>
+            <li><%= link_to 'Public Recipes'%>
+            <li><%= link_to 'General Shopping list'%></li>
+            <li><%= link_to 'Sign Out', sign_out_user_path(current_user.id), method: :delete %></li>
+        <%end%>
+    </ul>
+</nav>
