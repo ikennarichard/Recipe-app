@@ -74,4 +74,8 @@ group :test do
   gem 'webdrivers'
 end
 
+# user authentication
 gem 'devise', '~> 4.9'
+
+# user authorization
+gem 'cancancan'
