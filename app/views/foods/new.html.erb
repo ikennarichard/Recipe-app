@@ -1,0 +1,27 @@
+<%= form_with model: @food, url: foods_path, local: true, class: "food" do |f|%>
+    <h3>Add new food</h3>
+    <div>
+        <%= f.label :name%><br>
+        <%= f.text_field :name, required: true, placeholder: "Name", class: "food_name"%>
+    </div><br>
+     
+
+    <div>
+        <%= f.label :measurement_unit %><br>
+        <%= f.text_field :measurement_unit, required: true, placeholder: "measurement_unit"%>
+    </div><br>
+
+    <div>
+        <%= f.label :price %><br>
+        <%= f.number_field :price, required: true, placeholder: "Price in $$$"%>
+    </div><br> 
+
+    <div>
+        <%= f.label :quatity %><br>
+        <%= f.text_field :quantity, required: true, placeholder: "Quantity"%>
+    </div><br>
+
+    <div>
+        <%= f.submit "Create food", class: "btn" %>
+    </div>
+<% end %>
