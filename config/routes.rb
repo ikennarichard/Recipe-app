@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "recipes#index"
   get '/users/:id/sign_out', to: 'application#sign_out_user', as: 'sign_out_user'
   
-  # resources :foods
+  resources :users
+  resources :foods, only: [:index, :show, :new, :create, :destroy]
   resources :recipes
 end
