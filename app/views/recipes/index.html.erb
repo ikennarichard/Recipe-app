@@ -1,0 +1,21 @@
+<div>
+  <% if user_signed_in? %>
+    <%=link_to "Sign Out", sign_out_user_path(id: current_user.id), method: :delete%>
+  <% end %>
+  <ul>
+  <%@recipes.each do |recipe|%>
+    <li>
+      <section class='recipe_card'>
+        <div class='recipe_title'>
+          <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
+
+          <% if current_user == recipe.user %>
+          <%= button_to 'Remove', recipe_path(recipe), method: :delete%>
+          <% end %>
+        </div>
+        <p><%recipe.description%></p>
+      </section>
+    </li>
+    <%end%>
+  </ul>
+</div>
