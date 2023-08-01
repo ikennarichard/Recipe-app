@@ -1,6 +1,9 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   def index
-    @recipes = current_user.recipes
+    @recipes = Recipe.all
+    # @recipes = Recipe.accessible_by(current_ability)
   end
 
   def show
@@ -10,6 +13,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = current_user.recipes.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_path, notice: 'Recipe was successfully deleted.'
+    redirect_to recipes_path
+    flash[:notice] = 'Recipe was successfully deleted.'
   end
 end
