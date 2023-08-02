@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = current_user.recipes.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       render 'errors/not_found', status: :not_found
   end
