@@ -1,3 +1,9 @@
+<h1>Recipes</h1>
+<%= link_to 'Add Recipe', new_recipe_path %>
+
+<% if @recipes.empty? %>
+<p>No recipes added yet, click Add Recipe to add a new recipe</p>
+<%else%>
 <div>
   <ul>
   <%@recipes.each do |recipe|%>
@@ -16,3 +22,4 @@
     <%end%>
   </ul>
 </div>
+<%end%>
