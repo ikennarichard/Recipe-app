@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy toggle_public_status]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.includes(:user).all
     # @recipes = Recipe.accessible_by(current_ability)
   end
 
