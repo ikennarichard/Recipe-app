@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   
   resources :users
   resources :foods, only: [:index, :show, :new, :create, :destroy]
-  resources :recipes
+  resources :recipes do
+    resources :recipe_foods
+  end
+
+  put '/recipes/:id/toggle_public_status', to: 'recipes#toggle_public_status', as: 'toggle_public_status'
 end
