@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :recipe_foods
   end
+  resources :public_recipes
 
   put '/recipes/:id/toggle_public_status', to: 'recipes#toggle_public_status', as: 'toggle_public_status'
 end
