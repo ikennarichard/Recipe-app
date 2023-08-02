@@ -1,7 +1,4 @@
 <div>
-  <% if user_signed_in? %>
-    <%=link_to "Sign Out", sign_out_user_path(id: current_user.id), method: :delete%>
-  <% end %>
   <ul>
   <%@recipes.each do |recipe|%>
     <li>
