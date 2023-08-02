@@ -1,0 +1,19 @@
+<div>
+  <h2>Public Recipes</h2>
+  <% @recipes.each do |recipe|%>
+    <div class="">
+            <%= link_to recipe_path(recipe.id), class: "" do %>
+                <div class="">
+                <div class="">
+                    <h3 class=""><%= recipe.name %></h3>
+                    <p class="">By: <%= recipe.user.name %></p>
+                </div>
+                    <article>
+                        <p><strong>Total Food Items:</strong> <%= recipe.foods.count %></p>
+                        <p><strong>Total Price:</strong> $<%= recipe.recipe_foods.sum { |rf| rf.food.price * rf.quantity } %></p>
+                   </article>
+                </div>
+        <% end %>
+    </div>
+  <% end %>
+</div>
