@@ -8,6 +8,6 @@ class Ability
 
     return unless user.present?
 
-    can :manage, :all
+    can :manage, Recipe, user: user
   end
 end
