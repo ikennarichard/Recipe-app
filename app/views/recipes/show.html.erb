@@ -9,12 +9,16 @@
   <p class="notice"><%= notice %></p>
 </div>
 
-<p>Steps go here</p>
-
 <div class='interactions'>  
+  <% if current_user == @recipe.user %>
   <button>Generate shopping list</button>
-  <button>Add Ingredient</button>
+  <button><%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe) %>
+<% end %>
+  </button>
 </div>
+
+<% if current_user == @recipe.user || @recipe.public?%>
+<p>Steps go here</p>
 
 <% if @recipe.recipe_foods.empty? %>
   <p class="no-food">No ingredients added yet, use add ingredient
@@ -31,16 +35,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Data 1</td>
-      <td>Data 2</td>
-      <td>Data 3</td>
-      <td>Data 4</td>
-    </tr>
+  <% @recipe.recipe_foods.each do |recipe| %>
+      <tr>
+        <td><%= recipe.food.name%></td>
+        <td><%= recipe.quantity %><%= recipe.food.measurement_unit %></td>
+        <td>$<%= recipe.quantity * recipe.food.price %></td>
+        <td>
+          <% if can? :destroy, recipe %>
+            <%= link_to 'Remove', recipe_recipe_food_path(@recipe.id, recipe.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, type:"button" %>
+          <% end %>
+        </td>
+      </tr> 
+    <% end %>
   </tbody>
 </table>
-<%end%>
-
-<% if current_user == @recipe.user %>
-  <%= link_to 'Add Food', new_recipe_recipe_food_path(@recipe) %>
 <% end %>
+<%end%>
