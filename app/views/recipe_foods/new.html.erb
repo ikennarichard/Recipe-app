@@ -1,7 +1,7 @@
 <section>
   <div>
     <h2>Add Ingredient</h2>
-    <%= form_with url: recipe_recipe_foods_path(params[:recipe_id]), method: :post do |form| %>
+    <%= form_with url: recipe_recipe_foods_path(@recipe), method: :post do |form| %>
       <div>
         <%= form.label :food_id, "Foods" %>
         <%= form.select :food_id, @foods.collect {|food| [food.name, food.id]}, { include_blank: false }, placeholder: "Foods" %>
