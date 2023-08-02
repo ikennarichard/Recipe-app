@@ -1,0 +1,13 @@
+<div>
+    Public:
+    <span class="toggle-btn <%=@recipe.public? ? 'public' : 'private'%>"
+    onclick= 'togglePublicStatus()'>
+      <% if @recipe.public? %>
+        <%= button_to toggle_public_status_path(@recipe), class: 'toggle-btn-toggle public', method: :put, remote: true do%>
+        <%end%>
+      <% else %>
+          <%= button_to toggle_public_status_path(@recipe), class: 'toggle-btn-toggle', method: :put, remote: true do%>
+          <%end%>
+      <% end %>
+    </span>
+</div>

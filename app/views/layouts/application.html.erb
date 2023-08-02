@@ -7,8 +7,9 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'public_toggle', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
-     <%= javascript_include_tag 'index' %>
+    <%= javascript_include_tag 'index', "data-turbolinks-track": "reload" %>
   </head>
 
   <body>

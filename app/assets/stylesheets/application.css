@@ -1,6 +1,6 @@
 .notice {
   overflow: hidden;
-  max-height: 200px;
+  max-height: 100px;
   transition: all 0.9s ease;
 }
 
