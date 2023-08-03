@@ -1,0 +1,23 @@
+<div class="form_container">
+  <%= form_with model: @recipe, method: :post, local: true do |form| %>
+    <div class="input_field">
+      <%= form.label :name, "Recipe Name:" %>
+      <%= form.text_field :name, required: true, placeholder: "Recipe name" %>
+    </div>
+    <div class="input_field">
+      <%= form.label :preparation_time, "Preparation Time(hours):" %>
+      <%= form.text_field :preparation_time, placeholder: "Preparation time", required: true%>
+    </div>
+    <div class="input_field">
+      <%= form.label :cooking_time, "Cooking Time(hours):" %>
+      <%= form.text_field :cooking_time, placeholder: "Cooking time", required: true%>
+    </div>
+    <div class="input_field">
+      <%= form.label :description, "Recipe Description:" %>
+      <%= form.text_area :description, required: true, placeholder: "Recipe Description"%>
+    </div>
+    <div class="submit_btn">
+      <%= form.submit "Add Recipe" %>
+    </div>
+  <% end %>
+</div> 
