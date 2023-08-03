@@ -1,6 +1,5 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
-  before_action :set_recipe, only: %i[show edit update destroy toggle_public_status]
 
   def index
     @recipes = Recipe.includes(:user).all
@@ -46,10 +45,6 @@ class RecipesController < ApplicationController
   end
 
   private
-
-  def set_recipe
-    @recipe = Recipe.find(params[:id])
-  end
 
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description)
