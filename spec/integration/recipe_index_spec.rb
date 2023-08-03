@@ -1,16 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Recipe Index', type: :feature do
-  
-  let(:user) { create(:user) }  
+  let(:user) { create(:user) }
 
   before do
     login_as(user)
   end
 
   scenario 'displays the recipe index page with recipe cards' do
-    recipe = create(:recipe)
-    recipe2 = create(:recipe)
+    create(:recipe)
+    create(:recipe)
 
     visit recipes_path
 
@@ -34,7 +33,7 @@ RSpec.describe 'Recipe Index', type: :feature do
     login_as(user)
 
     user.recipes.create(name: 'Jellof', preparation_time: 1.0,
-      cooking_time: 1.0, description: 'Awesome rice')
+                        cooking_time: 1.0, description: 'Awesome rice')
 
     visit recipes_path
 
@@ -45,7 +44,7 @@ RSpec.describe 'Recipe Index', type: :feature do
     login_as(user)
 
     recipe = user.recipes.create(name: 'Fried rice', preparation_time: 1.0,
-      cooking_time: 1.0, description: 'Awesome rice')
+                                 cooking_time: 1.0, description: 'Awesome rice')
 
     visit recipes_path
 

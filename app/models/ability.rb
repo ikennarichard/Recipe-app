@@ -7,9 +7,7 @@ class Ability
     can :read, Recipe
 
     return unless user.present?
-
-    can :manage, :all
-    can :manage, Recipe, user: user
-    can :manage, Food, user: user
+    can :manage, Recipe, user:
+    can :manage, Food, user:
   end
 end

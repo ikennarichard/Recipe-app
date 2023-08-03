@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, unless: :public_recipe? 
+  before_action :authenticate_user!, unless: :public_recipe?
 
   def sign_out_user
     sign_out current_user
@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def public_recipe?
-    controller_name == 'public_recipes' && action_name == 'index'  
+    controller_name == 'public_recipes' && action_name == 'index'
   end
 end
