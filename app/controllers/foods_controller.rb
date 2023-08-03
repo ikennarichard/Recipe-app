@@ -1,10 +1,6 @@
 class FoodsController < ApplicationController
   before_action :set_user, only: %i[index new]
 
-  def set_user
-    @user = User.includes(:foods).find(current_user.id)
-  end
-
   def index
     @foods = Food.where(user_id: @user.id)
   end
@@ -35,5 +31,11 @@ class FoodsController < ApplicationController
 
     @food.destroy
     redirect_to foods_path, notice: 'Food successfully deleted.'
+  end
+
+  private
+
+  def set_user
+    @user = User.find(current_user.id)
   end
 end
