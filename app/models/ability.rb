@@ -4,11 +4,11 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :read, Recipe
+    can :read, :all
 
     return unless user.present?
-
     can :manage, :all
-    can :manage, Recipe, user:
+    can :manage, Recipe, user: user
+    can :manage, Food, user: user
   end
 end
