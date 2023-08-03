@@ -17,6 +17,16 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def create
+    @recipe = current_user.recipes.build(recipe_params)
+    if @recipe.save
+      redirect_to recipes_path
+    else
+      render 'new'
+    end
+  end
+
+
   def toggle_public_status
     @recipe = current_user.recipes.find(params[:id])
     @recipe.toggle_public_status
@@ -40,5 +50,9 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description)
   end
 end
