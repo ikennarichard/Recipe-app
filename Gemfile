@@ -66,7 +66,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  #for detecting n+1 issues
+  # for detecting n+1 issues
   gem 'bullet'
 end
 

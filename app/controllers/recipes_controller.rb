@@ -26,7 +26,6 @@ class RecipesController < ApplicationController
     end
   end
 
-
   def toggle_public_status
     @recipe = current_user.recipes.find(params[:id])
     @recipe.toggle_public_status
