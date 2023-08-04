@@ -5,7 +5,7 @@ RSpec.describe 'Food Index Page', type: :feature do
   let(:user) { create(:user) }
 
   before do
-    create_list(:food, 5, user: user)
+    create_list(:food, 5, user:)
     login_as(user)
   end
 
@@ -58,7 +58,7 @@ RSpec.describe 'Food Index Page', type: :feature do
     click_button 'Create food'
 
     sleep 3
-    expect(page).to have_content('Tomato') 
+    expect(page).to have_content('Tomato')
     expect(page).to have_content('grams')
     expect(page).to have_content('10')
     expect(page).to have_content('10')

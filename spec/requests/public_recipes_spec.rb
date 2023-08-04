@@ -9,12 +9,11 @@ RSpec.describe 'PublicRecipies', type: :request do
 
   describe 'GET #index' do
     it 'should display list of public recipies' do
-
       get public_recipes_path
 
       expect(response).to have_http_status(:success)
 
-      expect(response.body).to include("Public Recipes")
+      expect(response.body).to include('Public Recipes')
     end
   end
 end
