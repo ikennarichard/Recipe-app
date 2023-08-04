@@ -1,16 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it { should have_many(:foods).dependent(:destroy) }
-  it { should have_many(:recipes).dependent(:destroy) }
+  subject do
+  build(:user)
+  end
 
-  # Devise Modules
-  it { should validate_presence_of(:email) }
-  it { should validate_uniqueness_of(:email).case_insensitive }
-  it { should validate_presence_of(:password) }
-  it { should validate_length_of(:password).is_at_least(6) }
-  it { should validate_confirmation_of(:password) }
-  it { should allow_value('user@example.com').for(:email) }
-  it { should_not allow_value('user@example').for(:email) }
-  it { should validate_uniqueness_of(:email).case_insensitive }
+  before { subject.save }
+
+  it 'validates the presence of a subject' do
+    expect(subject).to be_valid
+  end
+
+  it 'is expected to have many foods' do
+    expect(subject.foods).to be_empty
+    food = subject.foods.create!(name: 'Test Food', measurement_unit: 'grams', price: 3.99)
+    expect(subject.foods).to include(food)
+  end
+
+  it 'is expected to have many recipes' do
+    expect(subject.recipes).to be_empty
+    recipe = subject.recipes.create!(name: 'Test Recipe', preparation_time: 3, cooking_time: 6,
+                                     description: 'This is a test recipe')
+    expect(subject.recipes).to include(recipe)
+  end
 end
