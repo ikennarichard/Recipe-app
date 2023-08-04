@@ -1,20 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Recipe, type: :model do
-  let(:user) { User.create!(name: 'John Doe', email: 'john@gmail.com', password: 'password') }
-  let(:recipe) {
-    Recipe.create!(
-      user: user,
-      name: 'Test Recipe', preparation_time: 3, cooking_time: 6,
-      description: 'This is a test recipe'
-    )
-  }
-
-  it 'ensures recipe is created for a user' do
-    expect(recipe).to be_valid
+describe Recipe, type: :model do
+  subject do
+    build(:recipe)
   end
 
-  it 'validates the presence of name' do
-    expect(recipe.name).to eq('Test Recipe')
+  it 'name should be present' do
+    subject.name = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'displays description' do
+    subject.description = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'displays cooking time and preparation time' do
+    expect(subject.cooking_time).to eq(1.0)
+    expect(subject.preparation_time).to eq(1.0)
   end
 end
