@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   subject do
-  build(:user)
+    build(:user)
   end
 
   before { subject.save }
