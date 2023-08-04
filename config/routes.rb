@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :public_recipes
 
   put '/recipes/:id/toggle_public_status', to: 'recipes#toggle_public_status', as: 'toggle_public_status'
+  get '/general_shopping_list/', to: 'shopping_list#index', as: 'shopping_list'
 end
