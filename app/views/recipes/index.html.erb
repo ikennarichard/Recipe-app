@@ -1,0 +1,25 @@
+<h2>Recipes</h2>
+<%= link_to 'Add Recipe', new_recipe_path, class:'add-recipe' %>
+
+<% if @recipes.empty? %>
+<p>No recipes added yet, click Add Recipe to add a new recipe</p>
+<%else%>
+<div>
+  <ul class='recipes'>
+  <%@recipes.each do |recipe|%>
+    <li class='recipe-container'>
+      <section class='recipe-card'>
+        <div class='recipe-title'>
+          <h2><%= link_to recipe.name, recipe_path(recipe), class:'recipe-heading' %></h2>
+
+          <% if current_user == recipe.user %>
+          <%= button_to 'Remove', recipe_path(recipe), method: :delete%>
+          <% end %>
+        </div>
+        <p class='description'><%=recipe.description%></p>
+      </section>
+    </li>
+    <%end%>
+  </ul>
+</div>
+<%end%>

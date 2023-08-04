@@ -1,0 +1,29 @@
+<h2>Shopping List</h2>
+
+<div class="food-items-count">
+  <p><strong>Amount of food items to buy:</strong> <%= @total_food_items %></p>
+  <p><strong>Total value of food needed:</strong> <%= "$#{@total_price}" %></p>
+</div>
+
+<% if @recipe_foods.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe_foods.each do |recipe_food| %>
+        <tr>
+          <td><%= recipe_food.food.name %></td>
+          <td><%= recipe_food.quantity - recipe_food.food.quantity %> <%=recipe_food.food.measurement_unit%></td>
+          <td><%= "$#{(recipe_food.quantity - recipe_food.food.quantity) * recipe_food.food.price}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No missing foods for your recipes.</p>
+<% end %>

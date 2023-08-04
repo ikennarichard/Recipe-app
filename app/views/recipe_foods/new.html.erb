@@ -1,0 +1,18 @@
+<section>
+  <div>
+    <h2>Add Ingredient</h2>
+    <%= form_with url: recipe_recipe_foods_path(@recipe), method: :post do |form| %>
+      <div>
+        <%= form.label :food_id, "Foods" %>
+        <%= form.select :food_id, @foods.collect {|food| [food.name, food.id]}, { include_blank: false }, placeholder: "Foods" %>
+      </div>
+      <div>
+        <%= form.label :quantity, "Quantity" %>
+        <%= form.number_field :quantity, placeholder: "Quantity", class: 'number-field' %>
+      </div>
+      <div c>
+        <%= form.submit "Add Food", class: 'submit-btn' %>
+      </div>
+    <% end %>
+  </div>
+</section>
