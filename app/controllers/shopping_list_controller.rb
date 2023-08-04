@@ -1,7 +1,4 @@
-# app/controllers/shopping_list_controller.rb
 class ShoppingListController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @recipe_foods = RecipeFood.includes(recipe: :user, food: :user)
       .where(users: { id: current_user.id })
