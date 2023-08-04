@@ -10,8 +10,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = Food.new(food_params)
-    @food.user = current_user
+    @food = current_user.foods.build(food_params)
 
     if @food.save
       flash[:notice] = 'Food created successfully!'
@@ -20,10 +19,6 @@ class FoodsController < ApplicationController
       flash[:alert] = "Couldn't create food!"
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
 
   def destroy
@@ -37,5 +32,9 @@ class FoodsController < ApplicationController
 
   def set_user
     @user = User.find(current_user.id)
+  end
+
+  def food_params
+    params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
 end

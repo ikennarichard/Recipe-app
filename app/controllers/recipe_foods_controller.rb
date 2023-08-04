@@ -3,7 +3,6 @@ class RecipeFoodsController < ApplicationController
   before_action :set_recipe
 
   def new
-    @recipe_food = @recipe.recipe_foods.build
     @foods = Food.all
   end
 
