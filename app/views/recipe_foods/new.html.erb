@@ -8,10 +8,10 @@
       </div>
       <div>
         <%= form.label :quantity, "Quantity" %>
-        <%= form.number_field :quantity, placeholder: "Quantity" %>
+        <%= form.number_field :quantity, placeholder: "Quantity", class: 'number-field' %>
       </div>
       <div c>
-        <%= form.submit "Add Food" %>
+        <%= form.submit "Add Food", class: 'submit-btn' %>
       </div>
     <% end %>
   </div>

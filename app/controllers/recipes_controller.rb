@@ -2,8 +2,7 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @recipes = Recipe.includes(:user).all
-    # @recipes = Recipe.accessible_by(current_ability)
+    @recipes = current_user.recipes.includes(:user)
   end
 
   def show
@@ -30,11 +29,6 @@ class RecipesController < ApplicationController
     @recipe.toggle_public_status
 
     redirect_to recipe_path(@recipe)
-    flash[:notice] = if @recipe.public?
-                       'Recipe is set to public'
-                     else
-                       'Recipe is set to private'
-                     end
   end
 
   def destroy

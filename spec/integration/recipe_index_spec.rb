@@ -7,7 +7,7 @@ RSpec.describe 'Recipe Index', type: :feature do
     login_as(user)
   end
 
-  scenario 'displays the recipe index page with recipe cards' do
+  scenario 'should only display user recipes' do
     create(:recipe)
     create(:recipe)
 
@@ -16,8 +16,8 @@ RSpec.describe 'Recipe Index', type: :feature do
     expect(page).to have_content('Recipes')
     expect(page).to have_link('Add Recipe', href: new_recipe_path)
 
-    expect(page).to have_content('Recipe-1')
-    expect(page).to have_content('Recipe-2')
+    expect(page).not_to have_content('Recipe-1')
+    expect(page).not_to have_content('Recipe-2')
     expect(page).not_to have_button('Remove')
   end
 

@@ -1,5 +1,5 @@
 <div class="form_container">
-  <%= form_with model: @recipe, method: :post, local: true do |form| %>
+  <%= form_with model: @recipe, method: :post, local: true, class:'recipe-form' do |form| %>
     <div class="input_field">
       <%= form.label :name, "Recipe Name:" %>
       <%= form.text_field :name, required: true, placeholder: "Recipe name" %>
@@ -16,8 +16,8 @@
       <%= form.label :description, "Recipe Description:" %>
       <%= form.text_area :description, required: true, placeholder: "Recipe Description"%>
     </div>
-    <div class="submit_btn">
-      <%= form.submit "Add Recipe" %>
+    <div>
+      <%= form.submit "Add Recipe", class: 'submit-btn'%>
     </div>
   <% end %>
 </div> 
