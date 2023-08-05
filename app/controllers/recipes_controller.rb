@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = current_user.recipes.includes(:user)
-    # @recipes = Recipe.accessible_by(current_ability)
   end
 
   def show
