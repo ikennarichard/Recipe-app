@@ -1,23 +1,27 @@
-<div>
-  <h2><%= @recipe.name %></h2>
-  <p>Preparation Time: <%= @recipe.preparation_time %> hours</p>
-  <p>Cooking Time: <%= @recipe.cooking_time %> hours</p>
+<h2><%= @recipe.name %></h2>
+<div class='recipe-details'>
+  <div class='recipe-time'>
+    <p>Preparation Time: <%= @recipe.preparation_time %> hours</p>
+    <p>Cooking Time: <%= @recipe.cooking_time %> hours</p>
+    <p>Steps go here...</p>
+  </div>
 
   <% if can? :update, @recipe %>
     <%= render 'toggle_public_status' %>
   <%end%>
-  <p class="notice"><%= notice %></p>
 </div>
 
-<div class='interactions'>  
+<div class='recipe-interactions'>
+  <div>  
   <% if current_user == @recipe.user %>
-  <button>Generate shopping list</button>
-  <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe) %>
-<% end %>
+    <button disabled>Generate shopping list</button>
+    <button class='add-ingredient' ><%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe) %></button>
+  <% end %>
+  </div>
+  <hr>
 </div>
 
 <% if current_user == @recipe.user || @recipe.public?%>
-<p>Steps go here</p>
 
 <% if @recipe.recipe_foods.empty? %>
   <p class="no-food">No ingredients added yet, use add ingredient

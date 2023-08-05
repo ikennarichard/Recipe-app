@@ -1,5 +1,5 @@
-<%= form_with model: @food, url: foods_path, local: true, class: "food" do |f|%>
-    <h3>Add new food</h3>
+<h2>Add new food</h2>
+<%= form_with model: @food, url: foods_path, local: true, class: "food-form" do |f|%>
     <div>
         <%= f.label :name%><br>
         <%= f.text_field :name, required: true, placeholder: "Name", class: "food_name"%>
@@ -22,6 +22,6 @@
     </div><br>
 
     <div>
-        <%= f.submit "Create food", class: "btn" %>
+        <%= f.submit "Create food", class: "submit-btn" %>
     </div>
 <% end %>
