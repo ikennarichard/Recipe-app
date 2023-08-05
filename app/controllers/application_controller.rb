@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # before_action :authenticate_user!, unless: :public_recipe?
+  before_action :authenticate_user!, unless: :public_recipe?
 
   def sign_out_user
     sign_out current_user
