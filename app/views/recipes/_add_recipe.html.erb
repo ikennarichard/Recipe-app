@@ -16,8 +16,8 @@
       <%= form.label :description, "Recipe Description:" %>
       <%= form.text_area :description, required: true, placeholder: "Recipe Description"%>
     </div>
-    <div class="submit-btn">
-      <%= form.submit "Add Recipe" %>
+    <div>
+      <%= form.submit "Add Recipe", class: 'submit-btn'%>
     </div>
   <% end %>
 </div> 

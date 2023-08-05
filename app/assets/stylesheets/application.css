@@ -228,6 +228,11 @@ select {
   width: 100%;
 }
 
+textarea {
+  width: 200px;
+  height: 100px;
+}
+
 .number-field {
   border: 1px solid;
 }
