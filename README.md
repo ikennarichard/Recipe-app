@@ -100,7 +100,7 @@ rspec spec
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- Generate shopping list for individual food items
+- Generate shopping list for a recipe
 - Edit food list
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
